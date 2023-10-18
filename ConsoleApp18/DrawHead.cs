@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,12 @@ namespace ConsoleApp18
     {
         private static void DrawHead()
         {
-            graphics.FillEllipse(System.Drawing.Brushes.Red, snake[0][0], snake[0][1], 10, 10); // нарисовать красный круг размером 10 на 10 по координатам нулевой ячейки змейки
+            int r = random.Next(0, 256);
+            int g = random.Next(0, 256);
+            int b = random.Next(0, 256);
+            Color color = Color.FromArgb(r, g, b);
+            SolidBrush brush = new SolidBrush(color);
+            graphics.FillRectangle(brush, snake[0][0], snake[0][1], 10, 10);
         }
     }
 }

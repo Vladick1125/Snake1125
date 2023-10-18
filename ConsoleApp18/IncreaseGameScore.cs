@@ -10,9 +10,8 @@ namespace ConsoleApp18
     {
         private static void IncreaseGameScore()
         {
-            // увеличить gameScore на 1
             gameScore++;
-
+            Console.Title = "Snake Game | Score: " + gameScore;
         }
     }
 }

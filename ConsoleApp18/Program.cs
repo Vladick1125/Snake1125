@@ -7,6 +7,7 @@ using System.IO;
 using System.Drawing;
 using System.Diagnostics;
 using System.Threading;
+using System.Runtime;
 
 namespace ConsoleApp18
 {
@@ -32,6 +33,7 @@ namespace ConsoleApp18
             graphics.Clear(Color.Black); // очистка экрана
             InitSnake(); // начальная инициализация змейки
             GenerateApple(); // генерация яблока
+            
             threadSnake = new Thread(RunSnake); // создание потока для движения змейки
             threadSnake.Start(); // запуск потока
             RunConrol(); // запуск цикла с управлением
@@ -41,7 +43,8 @@ namespace ConsoleApp18
         {
             while (gameRunning)
             {   // в цикле читаем нажатую кнопку.
-                ConsoleKeyInfo key = Console.ReadKey();                
+                ConsoleKeyInfo key = Console.ReadKey();
+                Console.SetCursorPosition(0, 0);
                 if (controlBlock)   // если controlBlock стоит в значении true, то переход к следующей итерации
                     continue;
                 controlBlock = true; // временная блокировка управления, снимается в GetNextCoordinates
@@ -51,7 +54,7 @@ namespace ConsoleApp18
                     controlBlock = false;
                 if (snake.Count > 1 && oldDirection != direction && oldDirection % 2 == direction % 2) // если направление было изменено на противоположное
                 {
-                    GameOver(); // закончить игру
+
                 }
             }
         }
